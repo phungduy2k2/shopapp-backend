@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UpdateCategoryRespopnse {
+public class UpdateCategoryResponse {
     @JsonProperty("message")
     private String message;
 }

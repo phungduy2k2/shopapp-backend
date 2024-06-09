@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoleController {
     private final RoleService roleService;
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<?> getAllRoles() {
         List<Role> roles = roleService.getAllRoles();
         return ResponseEntity.ok(roles);

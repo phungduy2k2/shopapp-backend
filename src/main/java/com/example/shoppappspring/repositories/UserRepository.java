@@ -1,6 +1,6 @@
 package com.example.shoppappspring.repositories;
 
-import com.example.shoppappspring.models.User;
+import com.example.shoppappspring.models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

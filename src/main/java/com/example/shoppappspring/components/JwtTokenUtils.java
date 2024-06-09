@@ -20,18 +20,17 @@ import java.util.function.Function;
 
 @Component
 @RequiredArgsConstructor
-public class JwtTokenUtil {
+public class JwtTokenUtils {
     @Value("${jwt.expiration}")
     private int expiration; //save to an environment variable
-
     @Value("${jwt.secretKey}")
     private String secretKey;
-
-    public String generateToken(User user) throws Exception {
+    public String generateToken(User user) throws Exception{
         //properties => claims
         Map<String, Object> claims = new HashMap<>();
-//        this.generateSecretKey();
+        //this.generateSecretKey();
         claims.put("phoneNumber", user.getPhoneNumber());
+        claims.put("userId", user.getId());
         try {
             String token = Jwts.builder()
                     .setClaims(claims) //how to extract claims from this ?
@@ -47,8 +46,8 @@ public class JwtTokenUtil {
         }
     }
     private Key getSignInKey() {
-        byte[] bytes = Decoders.BASE64.decode(secretKey); // Decoders.BASE64.decode("DgPsZ7bfcuaO6cBteQPFJCFctN0rU0EkKZv9+rzEKhU=");
-        //Keys.hmacShaKeyFor(Decoders.BASE64.decode("DgPsZ7bfcuaO6cBteQPFJCFctN0rU0EkKZv9+rzEKhU="));
+        byte[] bytes = Decoders.BASE64.decode(secretKey);
+        //Keys.hmacShaKeyFor(Decoders.BASE64.decode("TaqlmGv1iEDMRiFp/pHuID1+T84IABfuA0xXh4GhiUI="));
         return Keys.hmacShaKeyFor(bytes);
     }
     private String generateSecretKey() {
